@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -57,3 +58,22 @@ Route::get("/felhasznaloiadat", function () {
         "knev" => request("keresztnev"),
     ]);
 });
+
+Route::get('/posts/{post}', function ( $post ) {
+
+    // mi lenne ha itt az adatbázisból jönnének az adatok?
+    // szimuláljuk az adatbázisunkat:
+    $posts = [
+        'first' => 'Első blogbejegyzés tartalma',
+        'second' => 'Második blogbejegyzés tartalma',
+    ];
+
+    return view('postnezet', [
+        'posttartalma' => $posts[$post] ?? "Nincs ilyen blogbejegyzés"
+    ]);
+});
+
+Route::get("/vezerlo/{post}", [
+    PostController::class,
+    'show'
+]);
