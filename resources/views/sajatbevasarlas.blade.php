@@ -1,3 +1,6 @@
+@extends('pastellayout')
+
+@section('tartalom')
 <div>
     <ol>
         @foreach ($bevasarlolista as $listaelem)
@@ -5,3 +8,8 @@
         @endforeach
     </ol>
 </div>
+@endsection
+
+@section('cim')
+Bevásárlólista
+@endsection
